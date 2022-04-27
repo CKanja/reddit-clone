@@ -10,7 +10,8 @@ app.post("/add_post", async (request, response) => {
       await post.save();
       response.send(post);
     } catch (error) {
-      response.status(500).send(error);
+    //   response.status(500).send(error){message:error};
+      response.status(500).send({ message: error.toString()})
     }
 });
 
