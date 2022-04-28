@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import { useState } from 'react'
 import './App.css';
+import { useNavigate } from 'react-router-dom'
 // const User = require("../models/users");
 
 function App() {
   
-  const [name, setName] = useState('')
+    const navigate = useNavigate()
+    const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
   
@@ -27,10 +29,10 @@ headers: {
 
   const data = await response.json()
 
-  // if (data.status === 'ok') {
-	// 		history.push('/login')
+  if (data.status === 'ok') {
+			navigate.push('/login')
      
-	// 	}
+		}
 
   console.log(data)
   }
