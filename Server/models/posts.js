@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const AutoIncrementPost = require('mongoose-sequence')(mongoose);
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const { Schema } = mongoose;
 
@@ -19,7 +19,8 @@ const Comment = new mongoose.Schema({
 )
 
 const PostSchema = new mongoose.Schema({
-    _Postid: Number,
+    // _Postid: String,
+    // _id: Number,
     title: {
     type: String,
     required: true,
@@ -34,9 +35,11 @@ const PostSchema = new mongoose.Schema({
   },
   downvotes: {
         type: Number,
+        default: 0
   },
   upvotes: {
         type: Number,
+        default: 0
   },
   category: {
             type: Array        
@@ -50,7 +53,7 @@ const PostSchema = new mongoose.Schema({
 });
 
 
-// PostSchema.plugin(AutoIncrementPost);
+PostSchema.plugin(AutoIncrement,{inc_field: 'id'});
 const Post = mongoose.model("Post", PostSchema);
 const CommentMod = mongoose.model("Comment", Comment);
 
