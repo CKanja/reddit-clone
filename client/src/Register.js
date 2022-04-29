@@ -42,14 +42,15 @@ headers: {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <h2>
           Welcome to Reddit.
-        </p>
+        </h2>
         
       </header>
       <div>
-        <h1>Register</h1>
+        
         <form onSubmit={registerUser}>
+          <h1>Register</h1>
           <input 
             value={name}
             onChange={(e) => setName(e.target.value)}

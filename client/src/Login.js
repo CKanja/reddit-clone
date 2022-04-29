@@ -1,5 +1,6 @@
 import { useState } from 'react'
 // import './App.css';
+// import './login.css';
 
 function Login() {
 	const [email, setEmail] = useState('')
@@ -24,7 +25,7 @@ function Login() {
 		if (data.user) {
 			localStorage.setItem('token', data.user)
 			alert('Login successful')
-			window.location.href = '/home'
+			window.location.href = '/home2'
 		} else {
 			alert('Please check your username and password')
 		}
@@ -32,8 +33,9 @@ function Login() {
 
 	return (
 		<div>
-			<h1>Login</h1>
+			
 			<form onSubmit={loginUser}>
+				<h1>Login</h1>
 				<input
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
