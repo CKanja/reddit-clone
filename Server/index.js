@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Router = require("./routes/routes")
 const PostRouter = require("./routes/postRoutes")
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
 const app = express();
 

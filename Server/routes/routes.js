@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/users");
 const userModel = require("../models/users");
 const app = express();
+const jwt = require('jsonwebtoken')
 
 // Endpoint to add a new user
 app.post("/add_user", async (request, response) => {
@@ -49,7 +50,15 @@ app.post("/login", async (request, response) => {
     })
 
     if (user) {
-        return response.json({status:"ok", user: true })
+
+            const token = jwt.sign(
+            {
+                email: user.email
+            }, 
+            'topsecret250'
+        )
+
+        return response.json({status:"ok", user: token })
     } else {
         return response.json({status:"error", user: false })
     }

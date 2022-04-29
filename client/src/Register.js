@@ -30,7 +30,8 @@ headers: {
   const data = await response.json()
 
   if (data.status === 'ok') {
-			navigate.push('/login')
+      window.location.href = '/login'
+			// navigate.push('/login')
      
 		}
 
