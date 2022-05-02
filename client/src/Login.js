@@ -1,15 +1,17 @@
 import { useState } from 'react'
 // import './App.css';
 // import './login.css';
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+	const navigate = useNavigate()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
 	async function loginUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://localhost:5000/api/v1/login', {
+		const response = await fetch('https://react-app-clone-summative.herokuapp.com/api/v1/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -25,7 +27,8 @@ function Login() {
 		if (data.user) {
 			localStorage.setItem('token', data.user)
 			alert('Login successful')
-			window.location.href = '/home2'
+			// window.location.href = '/home2'
+			navigate('/home2')
 		} else {
 			alert('Please check your username and password')
 		}
@@ -50,7 +53,7 @@ function Login() {
 					placeholder="Password"
 				/>
 				<br />
-				<input type="submit" value="Login" />
+				<input type="submit" value="Login"  />
 			</form>
 		</div>
 	)

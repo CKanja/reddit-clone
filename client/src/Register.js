@@ -14,7 +14,7 @@ function App() {
   async function registerUser(event) {
     event.preventDefault()
 
-    const response = await fetch('http://localhost:5000/api/v1/add_user', {
+    const response = await fetch('https://react-app-clone-summative.herokuapp.com/api/v1/add_user', {
     method:'POST',
 headers: {
   'Content-Type': 'application/json',
@@ -30,7 +30,8 @@ headers: {
   const data = await response.json()
 
   if (data.status === 'ok') {
-      window.location.href = '/login'
+      navigate('/login')
+      // window.location.href = '/login'
 			// navigate.push('/login')
      
 		}
@@ -41,7 +42,7 @@ headers: {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h2>
           Welcome to Reddit.
         </h2>

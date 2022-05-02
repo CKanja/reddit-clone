@@ -43,7 +43,7 @@ exports.retrieve_post = async (request, response) => {
       } else {
           return response.status(404).json({
           success: false,
-          message: `There is no post at id: ${postId}`
+          message: `There is no post at the id: ${postId}`
         });
       }
      

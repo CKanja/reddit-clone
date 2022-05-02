@@ -5,10 +5,12 @@ import './App.css';
 import { useNavigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
+// import { useNavigate } from 'react-router-dom'
+
 // import { request } from '../../Server/routes/routes'
 
 const Landing = () => {
-
+// const navigate = useHistory()
     const navigate = useNavigate()
     async function getPosts() {
     const getdata = await fetch('/api/v1/posts', {
@@ -44,18 +46,20 @@ const Landing = () => {
   async function addPost(event) {
     event.preventDefault()
 
-    const response = await fetch('/api/v1/add_post', {
-    method:'POST',
-headers: {
-  'Content-Type': 'application/json',
-},
-    body: JSON.stringify({
-      title,
-      content,
-      category,
-    }),
-    
-  })
+    const response = await fetch(
+      "https://react-app-clone-summative.herokuapp.com/api/v1/add_post",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          content,
+          category,
+        }),
+      }
+    );
 
   const data = await response.json()
 
@@ -111,14 +115,15 @@ const[posts, setPosts] = useState([]);
 
 // trial2
   useEffect(() => {
-    axios.get("http://localhost:5000/api/v1/posts")
-    .then(res => {
-      console.log(res)
-      setPosts(res.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    axios
+      .get("https://react-app-clone-summative.herokuapp.com/api/v1/posts")
+      .then((res) => {
+        console.log(res);
+        setPosts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [])
  
 
@@ -179,12 +184,12 @@ const submitbtn = {
         <header className="App-header">
              <button style={{"width": 150, "height": 40}} class="btn" 
            
-          type="Submit"><a href="/login"> Login </a></button>
+          type="Submit" onClick={() => navigate('/login')}> Login </button>
           <br/>
           <button style={{"width": 150, "height": 40}} class="btn" 
            
-          type="Submit"><a href="/register"> Sign Up </a></button> 
-        <img src={logo} className="App-logo" alt="logo" />
+          type="Submit" onClick={() => navigate('/register')}> Sign Up </button> 
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h1>
           Welcome to Reddit.
         </h1>

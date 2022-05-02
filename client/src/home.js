@@ -110,7 +110,7 @@ const[posts, setPosts] = useState([]);
 
 // trial2
   useEffect(() => {
-    axios.get("http://localhost:5000/api/v1/posts")
+    axios.get("/api/v1/posts")
     .then(res => {
       console.log(res)
       setPosts(res.data)
